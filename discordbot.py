@@ -34,7 +34,9 @@ async def senryu(ctx):
     nya=[]
     senryu=""
     with open("senryu.csv","r") as f:
-        nya=f
+        tmp=csv.reader(f)
+        for i in tmp:
+            nya.append(i)
     senryu=nya[0][random.randrange(len(nya[0]))]+nya[1][random.randrange(len(nya[1]))]+nya[0][random.randrange(len(nya[0]))]
     await ctx.send(senryu)
 
