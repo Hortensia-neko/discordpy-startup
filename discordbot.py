@@ -2,6 +2,7 @@ from discord.ext import commands
 import os
 import traceback
 import random
+import csv
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -28,5 +29,9 @@ async def hifumin(ctx):
     hifumin="加藤"+hifumi+"段"
     await ctx.send(hifumin)
 
+@bot.command()
+async def senryu(ctx):
+    with open("senryu5moji.csv") as senryu5:
+        
 
 bot.run(token)
