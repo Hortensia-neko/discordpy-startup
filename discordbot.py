@@ -31,7 +31,11 @@ async def hifumin(ctx):
 
 @bot.command()
 async def senryu(ctx):
-    with open("senryu5moji.csv") as senryu5:
-        
+    nya=[]
+    senryu=""
+    with open("senryu.csv","r") as f:
+        nya=f
+    senryu=nya[0][random.randrange(len(nya[0]))]+nya[1][random.randrange(len(nya[1]))]+nya[0][random.randrange(len(nya[0]))]
+    await ctx.send(senryu)
 
 bot.run(token)
