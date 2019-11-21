@@ -40,4 +40,16 @@ async def senryu(ctx):
     senryu=nya[0][random.randrange(len(nya[0]))]+nya[1][random.randrange(len(nya[1]))]+nya[0][random.randrange(len(nya[0]))]
     await ctx.send(senryu)
 
+@bot.command()
+async def senryu10ren(ctx):
+    nya=[]
+    senryu10ren=[]
+    with open("senryu.csv","r") as f:
+        tmp=csv.reader(f)
+        for i in tmp:
+            nya.append(i)
+    for i in range(10):
+        senryu10ren.append(nya[0][random.randrange(len(nya[0]))]+nya[1][random.randrange(len(nya[1]))]+nya[0][random.randrange(len(nya[0]))])
+    await ctx.send("\n".join(senryu10ren))
+
 bot.run(token)
