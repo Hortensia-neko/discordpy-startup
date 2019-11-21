@@ -22,7 +22,10 @@ async def ping(ctx):
 @bot.command()
 async def hifumin(ctx):
     numbers=["一","二","三","四","五","六","七","八","九"]
-    hifumin="加藤"+numbers[random.randrange(len(numbers))]+numbers[random.randrange(len(numbers))]+numbers[random.randrange(len(numbers))]+numbers[random.randrange(len(numbers))]+"段"
+    hifumi=numbers[random.randrange(len(numbers))]+numbers[random.randrange(len(numbers))]+numbers[random.randrange(len(numbers))]+numbers[random.randrange(len(numbers))]
+    if hifumi[3]==numbers[0]:
+        hifumi[3]="初"
+    hifumin="加藤"+hifumi+"段"
     await ctx.send(hifumin)
 
 
