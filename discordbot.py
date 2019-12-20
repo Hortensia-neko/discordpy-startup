@@ -3,6 +3,7 @@ import os
 import traceback
 import random
 import csv
+import numpy as np
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -23,7 +24,7 @@ async def ping(ctx):
 @bot.command()
 async def hifumin(ctx):
     numbers=["一","二","三","四","五","六","七","八","九"]
-    hifumi=random.choice(numbers)+random.choice(numbers)+random.choice(numbers)+random.choice(numbers)
+    hifumi=np.random.choice(numbers)+np.random.choice(numbers)+np.random.choice(numbers)+np.random.choice(numbers)
     if hifumi[3]==numbers[0]:
         hifumi=hifumi[:3]+"初"
     hifumin="加藤"+hifumi+"段"
@@ -37,7 +38,7 @@ async def senryu(ctx):
         tmp=csv.reader(f)
         for i in tmp:
             nya.append(i)
-    senryu=random.choice(nya[0])+random.choice(nya[1])+random.choice(nya[0])
+    senryu=np.random.choice(nya[0])+np.random.choice(nya[1])+np.random.choice(nya[0])
     await ctx.send(senryu)
 
 @bot.command()
@@ -49,7 +50,7 @@ async def senryu10ren(ctx):
         for i in tmp:
             nya.append(i)
     for i in range(10):
-        senryu10ren.append(random.choice(nya[0])+random.choice(nya[1])+random.choice(nya[0])])
+        senryu10ren.append(np.random.choice(nya[0])+np.random.choice(nya[1])+np.random.choice(nya[0])])
     await ctx.send("\n".join(senryu10ren))
 
 bot.run(token)
