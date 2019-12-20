@@ -50,7 +50,8 @@ async def senryu10ren(ctx):
         for i in tmp:
             nya.append(i)
     for i in range(10):
-        senryu10ren.append("".join((np.random.choice(nya[0])+np.random.choice(nya[1])+np.random.choice(nya[0])])))
+        tmp=np.random.choice(nya[0])+np.random.choice(nya[1])+np.random.choice(nya[0])
+        senryu10ren.append(tmp)
     await ctx.send("\n".join(senryu10ren))
 
 bot.run(token)
