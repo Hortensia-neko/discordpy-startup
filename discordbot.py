@@ -37,7 +37,7 @@ async def senryu(ctx):
         tmp=csv.reader(f)
         for i in tmp:
             nya.append(i)
-    senryu=random.choice(nya[0)+random.choice(nya[1])+random.choice(nya[0])
+    senryu=random.choice(nya[0])+random.choice(nya[1])+random.choice(nya[0])
     await ctx.send(senryu)
 
 @bot.command()
