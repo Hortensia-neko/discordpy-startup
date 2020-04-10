@@ -3,6 +3,7 @@ import os
 import traceback
 import random
 import csv
+import re
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -51,5 +52,12 @@ async def senryu10ren(ctx):
     for i in range(10):
         senryu10ren.append(random.choice(nya[0])+random.choice(nya[1])+random.choice(nya[0]))
     await ctx.send("\n".join(senryu10ren))
+
+@bot.command()
+async def dice(ctx,arg):
+    diceSize=list(map(int,re.split("d|D",arg)))
+    deme=[random.randint(1,diceSize[1]) for i in range(diceSize[0])]
+    goukei=sum(deme)
+    await ctx.send(arg+"→"+str(deme)+"→"+str(goukei))
 
 bot.run(token)
