@@ -60,4 +60,32 @@ async def dice(ctx,arg):
     goukei=sum(deme)
     await ctx.send(arg+"→"+str(deme)+"→"+str(goukei))
 
+def dxRoll(num,C,res):
+    rolled=sorted([random.randint(1,10) for i in range(num)])
+    criticaled=list(filter(lambda x:x>=C,rolled))
+    tmp=max(rolled)
+    if tmp>=C:
+        res+=10
+        a=dxRoll(len(criticaled),C,res)
+        return "10"+"["+"+".join(map(str,rolled))+"]"+"+"+a[0],a[1]
+    else:
+        res+=tmp
+        return [str(tmp)+"["+"+".join(map(str,rolled))+"]",str(res)]
+        
+def dx(string):
+    tmp=list(map(int,re.split("dx|\+|>=",string)))
+    res=dxRoll(tmp[0],tmp[1],tmp[2])
+    ans="("+string+")"+"→"+res[0]+"+"+str(tmp[2])+"→"+res[1]
+    if len(tmp)<4:
+        return ans
+    elif tmp[3]<int(res[1]):
+        return ans+">="+str(tmp[3])+"\n成功"
+    else:
+        return ans+">="+str(tmp[3])+"\n失敗"
+
+@bot.command()
+async def dx(ctx,arg):
+    res=dx(arg)
+    await ctx.send(res)
+
 bot.run(token)
