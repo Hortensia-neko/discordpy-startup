@@ -79,7 +79,7 @@ def DX(string):
     ans="("+string+")"+"→"+res[0]+"+"+tmp[2]+"→"+res[1]
     if len(tmp)<4:
         return ans
-    elif tmp[3]<int(res[1]):
+    elif int(tmp[3])<int(res[1]):
         return ans+">="+str(tmp[3])+"\n成功"
     else:
         return ans+">="+str(tmp[3])+"\n失敗"
