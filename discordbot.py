@@ -73,9 +73,10 @@ def dxRoll(num,C,res):
         return [str(tmp)+"["+"+".join(map(str,rolled))+"]",str(res)]
         
 def DX(string):
-    tmp=list(map(int,re.split("dx|\+|>=",string)))
-    res=dxRoll(tmp[0],tmp[1],tmp[2])
-    ans="("+string+")"+"→"+res[0]+"+"+str(tmp[2])+"→"+res[1]
+    tmp=re.split("dx|\+|>=",string)
+    if tmp[1]=="":tmp[1]=10
+    res=dxRoll(int(tmp[0]),int(tmp[1]),int(tmp[2]))
+    ans="("+string+")"+"→"+res[0]+"+"+tmp[2]+"→"+res[1]
     if len(tmp)<4:
         return ans
     elif tmp[3]<int(res[1]):
