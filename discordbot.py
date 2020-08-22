@@ -72,7 +72,7 @@ def dxRoll(num,C,res):
         res+=tmp
         return [str(tmp)+"["+"+".join(map(str,rolled))+"]",str(res)]
         
-def dx(string):
+def DX(string):
     tmp=list(map(int,re.split("dx|\+|>=",string)))
     res=dxRoll(tmp[0],tmp[1],tmp[2])
     ans="("+string+")"+"→"+res[0]+"+"+str(tmp[2])+"→"+res[1]
@@ -85,7 +85,7 @@ def dx(string):
 
 @bot.command()
 async def dx(ctx,arg):
-    res=dx(arg)
+    res=DX(arg)
     await ctx.send(res)
 
 bot.run(token)
