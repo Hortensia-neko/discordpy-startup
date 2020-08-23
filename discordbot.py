@@ -80,9 +80,9 @@ def DX(string):
     if len(tmp)<4:
         return ans
     elif int(tmp[3])<int(res[1]):
-        return ans+">="+str(tmp[3])+"\n成功"
+        return ans+">="+tmp[3]+"\n成功"
     else:
-        return ans+">="+str(tmp[3])+"\n失敗"
+        return ans+">="+tmp[3]+"\n失敗"
 
 @bot.command()
 async def dx(ctx,arg):
