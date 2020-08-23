@@ -72,7 +72,7 @@ def dxRoll(num,C,res):
         res+=tmp
         return [str(tmp)+"["+"+".join(map(str,rolled))+"]",str(res)]
         
-def DX(string):
+def DoubleCross(string):
     tmp=re.split("dx|\+|>=",string)
     if tmp[1]=="":tmp[1]=10
     res=dxRoll(int(tmp[0]),int(tmp[1]),int(tmp[2]))
@@ -86,7 +86,7 @@ def DX(string):
 
 @bot.command()
 async def dx(ctx,arg):
-    res=DX(arg)
+    res=DoubleCross(arg)
     await ctx.send(res)
 
 bot.run(token)
