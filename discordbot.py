@@ -73,19 +73,21 @@ def dxRoll(num,C,res):
         return [str(tmp)+"["+"+".join(map(str,rolled))+"]",str(res)]
         
 def DoubleCross(string):
-    tmp=re.split("dx|\+|>=",string)
+    tmp=re.split("dx|\+|-|>=",string)
     if tmp[1]=="":
         tmp[1]="10"
-    if not("+" in string):
+    if ("-" in string):
+        tmp[2]=str(-int(tmp[2]))
+    elif not("+" in string):
         if len(tmp)==2:
             tmp+=["0"]
         else:
             tmp=tmp[:2]+["0",tmp[2]]
     res=dxRoll(int(tmp[0]),int(tmp[1]),int(tmp[2]))
-    ans="("+string+")"+"→"+res[0]+"+"+tmp[2]+"→"+res[1]
+    ans="("+string+")"+"→"+res[0]+tmp[2]+"→"+res[1] if "-" in string else "("+string+")"+"→"+res[0]+"+"+tmp[2]+"→"+res[1]
     if len(tmp)<4:
         return ans
-    elif int(tmp[3])<int(res[1]):
+    elif int(tmp[3])<=int(res[1]):
         return ans+">="+tmp[3]+"\n成功"
     else:
         return ans+">="+tmp[3]+"\n失敗"
