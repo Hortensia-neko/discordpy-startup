@@ -1,2 +1,2 @@
-discord.py[voice]>=1.4.1
+discord.py>=1.4.1
 pytest-flake8
