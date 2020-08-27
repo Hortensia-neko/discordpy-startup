@@ -28,7 +28,8 @@ async def hifumin(ctx):
     if hifumi[3]==numbers[0]:
         hifumi=hifumi[:3]+"初"
     hifumin="加藤"+hifumi+"段"
-    await ctx.send(hifumin)
+    res="あ、あなたは伝説の"+hifumin+"！　ここでこんなとは" if hifumi[:3] =="一二三" else "あなたは"+hifumin+"です"
+    await ctx.send(res)
 
 @bot.command()
 async def senryu(ctx):
