@@ -54,9 +54,15 @@ async def senryu10ren(ctx):
 
 @bot.command()
 async def dice(ctx,arg):
-    diceSize=list(map(int,re.split("d|D",arg)))
-    deme=[random.randint(1,diceSize[1]) for i in range(diceSize[0])]
-    goukei=sum(deme)
+    diceSize=list(map(int,re.split("d|D|\+|-",arg)))
+    rolled=[random.randint(1,diceSize[1]) for i in range(diceSize[0])]
+    deme=sum(rolled)+diceSize[2] if "+" in arg and len(diceSize)>2 else sum(rolled)-diceSize[2] if "-" in arg and len(diceSize)>2 else sum(rolled)
+    if "+" in arg:
+        res=arg+"→"+str(rolled)+"+"+str(diceSize[2])+"→"+str(deme)
+    elif "-" in arg:
+        res=arg+"→"+str(rolled)+"-"+str(diceSize[2])+"→"+str(deme)
+    else:
+        res=arg+"→"+str(rolled)+"→"+str(deme)
     await ctx.send(arg+"→"+str(deme)+"→"+str(goukei))
 
 def dxRoll(num,C,res):
