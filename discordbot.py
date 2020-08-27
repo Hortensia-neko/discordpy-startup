@@ -55,7 +55,7 @@ async def senryu10ren(ctx):
 @bot.command()
 async def dice(ctx,arg):
     diceSize=list(map(int,re.split("d|D|\+|-",arg)))
-    rolled=[random.randint(1,diceSize[1]) for i in range(diceSize[0])]
+    rolled=sorted([random.randint(1,diceSize[1]) for i in range(diceSize[0])])
     deme=sum(rolled)+diceSize[2] if "+" in arg else sum(rolled)-diceSize[2] if "-" in arg else sum(rolled)
     if "+" in arg:
         res=arg+"→"+str(sum(rolled))+str(rolled)+"+"+str(diceSize[2])+"→"+str(deme)
