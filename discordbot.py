@@ -63,7 +63,7 @@ async def dice(ctx,arg):
         res=arg+"→"+str(rolled)+"-"+str(diceSize[2])+"→"+str(deme)
     else:
         res=arg+"→"+str(rolled)+"→"+str(deme)
-    await ctx.send(arg+"→"+str(deme)+"→"+str(goukei))
+    await ctx.send(res)
 
 def dxRoll(num,C,res):
     rolled=sorted([random.randint(1,10) for i in range(num)])
