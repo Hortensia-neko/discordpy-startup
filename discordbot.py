@@ -24,7 +24,7 @@ async def ping(ctx):
 @bot.command()
 async def hifumin(ctx):
     numbers=["一","二","三","四","五","六","七","八","九"]
-    hifumi=random.choices(numbers,k=4)
+    hifumi=random.sample(numbers,k=4)
     hifumin="加藤"+"".join(hifumi[:3])+"初段" if hifumi[3]==numbers[0] else "加藤"+"".join(hifumi)+"段"
     res="あ、あなたは伝説の"+hifumin+"！　ここでこんなとは" if hifumi[:3] ==["一","二","三"] else "あなたは"+hifumin+"です"
     await ctx.send(res)
